@@ -30,7 +30,7 @@ urls = [url.replace(' ','-') for url in urls if url.startswith('http')]
 
 d = {}
 for url in urls:
-    msg = url.rsplit('/')[-1].replace('-', ' ')} {url.rsplit('/')[-2].replace('-', ' ').replace(' i ', ' ')
+    msg = url.rsplit('/')[-1].replace('-', ' ') + url.rsplit('/')[-2].replace('-', ' ').replace(' i ', ' ')
     st.markdown(f"Scraping [{msg}]({url})")
     try:
         random.randint(1, 5)
