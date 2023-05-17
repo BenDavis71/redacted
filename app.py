@@ -26,23 +26,21 @@ if urls:
     file_name = urls.name
     urls = pd.read_excel(urls, sheet_name=1)
     urls = (urls.iloc[:, 0].fillna('').to_list())
-    urls
     urls = [url.replace(' ','-') for url in urls if url.startswith('http')]
-    urls
 
     d = {}
     for url in urls:
         msg = url.rsplit('/')[-1].replace('-', ' ') + url.rsplit('/')[-2].replace('-', ' ').replace(' i ', ' ')
         st.markdown(f"Scraping [{msg}]({url})")
-        try:
-            random.randint(1, 5)
-            df = pd.read_html(url)[0]
-            value = df[df[0]=='Total Compensation'][1].iloc[0]
-            d[url] = value
-            st.write(value)
-        except:
-            st.write(f'Not able to read from {url} - URL may be invalid')
-            d[url] = 'URL Not Valid'
+        #try:
+        random.randint(1, 5)
+        df = pd.read_html(url)[0]
+        value = df[df[0]=='Total Compensation'][1].iloc[0]
+        d[url] = value
+        st.write(value)
+        #except:
+       #     st.write(f'Not able to read from {url} - URL may be invalid')
+       #     d[url] = 'URL Not Valid'
 
     st.title('Done!')
 
