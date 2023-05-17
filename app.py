@@ -25,9 +25,10 @@ urls = st.file_uploader('Upload Excel Doc')
 if urls:
     file_name = urls.name
     urls = pd.read_excel(urls, sheet_name=1)
-    urls
     urls = (urls.iloc[:, 0].fillna('').to_list())
+    urls
     urls = [url.replace(' ','-') for url in urls if url.startswith('http')]
+    urls
 
     d = {}
     for url in urls:
